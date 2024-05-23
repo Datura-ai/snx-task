@@ -36,7 +36,8 @@ The aim here is not a fully operational product but to evaluate your solution st
 
 - **Time Allocation**: You have 5 hours to work on this task. Focus on delivering the core functionality within this timeframe.
 - **Submission**: Upon completion, submit a Pull Request to this repository. Please include a detailed description of your solution.
-- **JSON Parameter Example**: To aid in understanding the expected client-side input, below is an example of a JSON parameter object. This includes a simple Python code snippet and other parameters:
+- **JSON Parameter Example**: To aid in understanding the expected client-side input, below is an example of a JSON parameter object. This includes a simple Python 
+code snippet and other parameters:
 
 Example 1: 
 ```json
@@ -64,5 +65,26 @@ Example 2:
     "storage": "500MB"
   }
 }
-
+```
 This JSON object exemplifies the structure and type of data your API will receive from clients. It outlines the task type, the code to be executed, and the resource requirements.
+
+
+## Additional Instructions
+
+### Version Control and Commit Strategy
+
+- **Initial Commit**: Immediately after setting up your project structure, make an initial commit to the repository. This serves as a timestamp to help track the time spent on the task.
+- **Regular Commits**: Aim to commit your changes at least once every hour. This demonstrates your progress and helps in maintaining a good version control practice.
+- **Commit Messages**: Ensure your commit messages are descriptive and reflect the changes made or features added. This is a key part of good GitHub practices.
+- **Well-Commented Code**: Your code should be well-commented, explaining the logic and decisions made. This is crucial for maintainability and understanding by others.
+
+### Time Management and Submission
+
+- **Work Duration**: Do not work more than 5 hours on this task. It's important to manage your time effectively and focus on delivering the core functionality within the allocated timeframe.
+- **Final Submission**: After 5 hours, or upon completion, submit a Pull Request (PR) to this repository with your final results. The PR description should provide a detailed account of your solution, highlighting any assumptions, challenges faced, and how you addressed them.
+
+### Emphasis on Quality
+
+- **Code Quality**: Strive for clean, efficient, and readable code. The quality of your code is just as important as the functionality.
+- **GitHub Practices**: Use branches for development and merge them into the main branch via Pull Requests. This not only helps in organizing your work but also in incorporating code reviews.
+- **Feedback Incorporation**: Be open to feedback on your PR and ready to make adjustments as necessary. This is a part of the collaborative development process.
