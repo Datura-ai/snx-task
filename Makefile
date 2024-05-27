@@ -1,4 +1,4 @@
-.PHONY: build-task-executor
+.PHONY: build-task-executor generate-migrations
 
 build-task-executor:
 	@echo "Building Tasks Executor"
