@@ -22,6 +22,13 @@ class Settings(BaseSettings):
     ENVIRONMENT: Literal["local", "staging", "production"] = "local"
     SQLALCHEMY_DB_URL: str = Field(env='SQLALCHEMY_DB_URL')
     
+    # Task executor docker image
+    # This image can be built in /<root-project>/task-executor
+    TASK_EXECUTOR_DOCKER_IMAGE: str = "task-executor"
+
+    # For extfs and overlay2 file system, storage-opt is available. 
+    # So, provide an option to skip storage-opt flag when creating a docker container.
+    EXCLUDE_STORAGE_OPTION: bool = Field(env="EXCLUDE_STORAGE_OPTION", default=True)
 
     @computed_field  # type: ignore[misc]
     @property

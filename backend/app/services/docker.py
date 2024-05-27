@@ -2,6 +2,7 @@ import docker
 from docker.errors import ContainerError, ImageNotFound, APIError
 
 from app.models import Task, TaskStatusEnum
+from app.core.config import settings
 
 
 class DockerService:
@@ -37,7 +38,7 @@ class DockerService:
             }
 
             kwargs: dict = {
-                "image": "task-executor:latest",
+                "image": settings.TASK_EXECUTOR_DOCKER_IMAGE,
                 "detach": True,
                 "cpu_count": resources["cpus"],
                 "mem_limit": resources["memory"],
@@ -47,6 +48,9 @@ class DockerService:
                 },
                 **gpu_config
             }
+
+            if settings.EXCLUDE_STORAGE_OPTION is not True:
+                kwargs["storage_opt"] = resources["storage_opt"]
 
             # Run the command in a new container
             container = client.containers.run(**kwargs)
