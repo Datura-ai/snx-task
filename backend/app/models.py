@@ -15,6 +15,14 @@ class TaskStatusEnum(str, enum.Enum):
 
 
 class Task(SQLModel, table=True):
+    """Task model. 
+    
+    This model store details for a single task. It'll be helpful to track pending tasks, 
+    failed tasks, and completed tasks. 
+
+    In the future, we can add more functionalities to re-run etc. 
+    This will also track elapsed time for task completion.
+    """
     id: Optional[int] = Field(default=None, primary_key=True)
     task_type: TaskTypeEnum = Field(sa_column=Column(Enum(TaskTypeEnum)))    
     task_status: TaskStatusEnum = Field(sa_column=Column(Enum(TaskStatusEnum)))
