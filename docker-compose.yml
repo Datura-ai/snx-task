@@ -10,11 +10,13 @@ services:
       - BACKEND_CORS_ORIGINS=${BACKEND_CORS_ORIGINS}
       - SECRET_KEY=${SECRET_KEY?Variable not set}
       - USERS_OPEN_REGISTRATION=${USERS_OPEN_REGISTRATION}
+      - DOCKER_HOST=unix:///var/run/docker.sock
     build:
       context: ./backend
       args:
         INSTALL_DEV: ${INSTALL_DEV-false}
     volumes:
       - ./backend:/app/
+      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "80:80"

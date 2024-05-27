@@ -18,12 +18,12 @@ class TaskStatusEnum(str, enum.Enum):
 
 
 class Resource(SQLModel):
-    cpus: conint(ge=1)  # At least 1 CPU
-    memory: str = Field(regex=r'^\d+[mMgG]$') # Memory in format like '512m', '1g'
-    gpus: conint(ge=0) = 0  # At least 0 GPUs, default to 0
+    cpu: conint(ge=1)  # At least 1 CPU
+    ram: str = Field(regex=r'^\d+[mMgG]$') # Memory in format like '512m', '1g'
+    gpu: conint(ge=0) = 0  # At least 0 GPUs, default to 0
     storage: str = Field(regex=r'^\d+[mMgG]$')  # Storage in format like '1g', '10g'
     
-    @field_validator('memory', 'storage')
+    @field_validator('ram', 'storage')
     @classmethod
     def check_memory_storage(cls, v: str) -> str:
         if validate_size_str(v) is False:
@@ -35,11 +35,6 @@ class TaskBase(SQLModel):
     """Base model for Task."""
     task_type: TaskTypeEnum = Field(sa_column=Column(Enum(TaskTypeEnum)))
     code: str
-
-
-class TaskCreate(TaskBase):
-    """Schema to create a task."""
-    resources: Resource
 
 
 class Task(TaskBase, table=True):
@@ -57,6 +52,23 @@ class Task(TaskBase, table=True):
     gpu: int
     ram: str
     storage: str
-    output: str
+    output: Optional[str]
+    container_id: Optional[str]
+    elapsed_time: Optional[int]
 
 
+class TaskCreate(TaskBase):
+    """Schema to create a task."""
+    resources: Resource
+
+    def get_task(self) -> Task:
+        """Convert to Task model instance."""
+        return Task(
+            task_type=self.task_type, 
+            code=self.code, 
+            cpu=self.resources.cpu, 
+            gpu=self.resources.gpu, 
+            ram=self.resources.ram,
+            storage=self.resources.storage,
+            task_status=TaskStatusEnum.pending,
+        )
