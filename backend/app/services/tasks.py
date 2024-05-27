@@ -1,6 +1,8 @@
 from fastapi import Depends
 from typing_extensions import Annotated
+
 from app.dao import TaskDaoDep
+from app.models import TaskCreate
 
 
 class DockerService:
@@ -20,7 +22,7 @@ class TaskService:
         self.docker_service = docker_service
         self.task_dao = task_dao
 
-    def create_task(self):
-        print('TaskService->create_task')
+    def create_task(self, task: TaskCreate):
+        print('TaskService->create_task', task)
         self.docker_service.create_container()
         self.task_dao.create()
