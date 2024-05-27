@@ -1,4 +1,4 @@
-# Candidate Nodes: Python API Development for Task Executor
+# Candidate Notes: Python API Development for Task Executor
 
 ## Interpretation Ultimate Goal of the Project
 
