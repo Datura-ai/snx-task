@@ -82,6 +82,7 @@ This JSON object exemplifies the structure and type of data your API will receiv
 
 - **Work Duration**: Do not work more than 5 hours on this task. It's important to manage your time effectively and focus on delivering the core functionality within the allocated timeframe.
 - **Final Submission**: After 5 hours, or upon completion, submit a Pull Request (PR) to this repository with your final results. The PR description should provide a detailed account of your solution, highlighting any assumptions, challenges faced, and how you addressed them.
+- **Video recording**: Please record and upload a video recording (using loom or some other tool) that shows you running and executing your code, as well explaining your comments about the code and your process, your blockers if any, and what you would focus on next if you had more time.
 
 ### Emphasis on Quality
 
